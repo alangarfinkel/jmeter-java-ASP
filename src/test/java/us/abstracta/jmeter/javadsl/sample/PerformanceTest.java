@@ -22,11 +22,11 @@ public class PerformanceTest {
             rpsThreadGroup()
             .maxThreads(100)
             .rampTo(1200, Duration.ofSeconds(60))
-            .children(httpSampler("Obligatorio-asp-version-pro-env.eba-ibtcwv3k.us-east-1.elasticbeanstalk.com/purchase/64502405627a75cc3c121d92")   
+            .children(httpSampler("http://localhost:3010/purchase/6490ee2c014c3be985acf0fd")   
             .param("startDate", "2023-01-01")
             .param("endDate", "2023-04-01")  
-            .header("company-api-key", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55TmFtZSI6IkFkaWRhczIiLCJpYXQiOjE2ODI5NzM2NjB9.Kd2mNUYzH6oBf4Gwn9jY2lmGA527Gs3z0CKt9bcFF-c")
-            .header("company-id", "645023dc627a75cc3c121d6d")),
+            .header("company-api-key", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55TmFtZSI6IkNvbXBhbnkgMSIsImlhdCI6MTY4NzIxNzU5N30.e6D6IGT7pmNyQVBRrEhTJcRgH-l4lrkUvJpXezqLwf4")
+            .header("company-id", "6490e5bd4904ab2dc977a7cf")),
             htmlReporter(reportsDirectory)
         ).run();
         assertThat(stats.overall().sampleTimePercentile99()).isLessThan(Duration.ofMillis(350));
@@ -40,9 +40,9 @@ public class PerformanceTest {
             rpsThreadGroup()
             .maxThreads(60)
             .rampTo(1200, Duration.ofSeconds(60))
-            .children(httpSampler("Obligatorio-asp-version-pro-env.eba-ibtcwv3k.us-east-1.elasticbeanstalk.com/sales/top-products")
-            .header("company-api-key", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55TmFtZSI6IkFkaWRhczIiLCJpYXQiOjE2ODI5NzM2NjB9.Kd2mNUYzH6oBf4Gwn9jY2lmGA527Gs3z0CKt9bcFF-c")
-            .header("company-id", "645023dc627a75cc3c121d6d")
+            .children(httpSampler("http://localhost:3010/sales/top-products")
+            .header("company-api-key", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55TmFtZSI6IkNvbXBhbnkgMiIsImlhdCI6MTY4NzIxNzYxMX0.1fONa3HpBRDZDPIkU1DHUu0uRAjKU7TSjrcqCPVULDc")
+            .header("company-id", "6490e5cb4904ab2dc977a7d2")
             
         ),
             htmlReporter(reportsDirectory)).run();
